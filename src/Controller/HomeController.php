@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\JobOffer;
+use App\Repository\JobOfferRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,11 +11,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(): Response
+    public function index(JobOfferRepository $jobOfferRepository): Response
     {
+        $jobOffers = $jobOfferRepository->findAll();
+
         return $this->render(
             'home/index.html.twig',
-            []
+            [
+                'jobOffers' => $jobOffers,
+            ]
         );
     }
 
@@ -44,14 +50,14 @@ class HomeController extends AbstractController
         );
     }
 
-    #[Route('/contact', name: 'app_contact')]
-    public function contact(): Response
-    {
-        return $this->render(
-            'home/contact.html.twig',
-            []
-        );
-    }
+    // #[Route('/contact', name: 'app_contact')]
+    // public function contact(): Response
+    // {
+    //     return $this->render(
+    //         'home/contact.html.twig',
+    //         []
+    //     );
+    // }
 
     #[Route('/profilee', name: 'app_profilee')]
     public function profilee(): Response
@@ -61,4 +67,6 @@ class HomeController extends AbstractController
             []
         );
     }
+
+    
 }

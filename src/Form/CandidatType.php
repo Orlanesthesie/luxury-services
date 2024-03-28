@@ -6,6 +6,7 @@ use App\Entity\Candidat;
 use App\Entity\Experience;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,10 +32,10 @@ class CandidatType extends AbstractType
             ->add('lastName')
             ->add('adress')
             ->add('country')
-            ->add('nationality')
-            ->add('passport')
+        ->add('nationality')
             ->add('passportFile', FileType::class, [
                 'label' => false,
+            'required' => false,
                 'mapped' => false,
                 'constraints' => [
                     new File([
@@ -49,6 +50,7 @@ class CandidatType extends AbstractType
             ->add('CV', FileType::class, [
                 'label' => false,
                 'mapped' => false,
+            'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
@@ -57,10 +59,11 @@ class CandidatType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Please upload a valid document',
                     ])
-                ]
+            ]
             ])
             ->add('profilPicture', FileType::class, [
                 'label' => false,
+            'required' => false,
                 'mapped' => false,
                 'constraints' => [
                     new File([
@@ -75,17 +78,7 @@ class CandidatType extends AbstractType
             ->add('currentLocation')
             ->add('dateOfBirth', null, [
                 'widget' => 'single_text',
-            ])
-            ->add('availability', ChoiceType::class, [
-                'label' => 'Disponible',
-                'required' => false,
-                'choices' => [
-                    'Oui' => true,
-                    'Non' => false,
-                ],
-                'expanded' => true, // Cette option va créer des boutons au lieu d'une liste déroulante
-                'multiple' => false, // S'assure qu'un seul bouton peut être sélectionné
-            ])
+        ])
             ->add('description', TextType::class, [])
             ->add('notes')
             ->add('dateCreated', null, [

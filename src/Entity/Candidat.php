@@ -34,9 +34,6 @@ class Candidat
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nationality = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $passport = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $passportFile = null;
 
@@ -51,9 +48,6 @@ class Candidat
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateOfBirth = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?bool $availability = true;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
@@ -168,17 +162,6 @@ class Candidat
         return $this;
     }
 
-    public function isPassport(): ?bool
-    {
-        return $this->passport;
-    }
-
-    public function setPassport(?bool $passport): static
-    {
-        $this->passport = $passport;
-
-        return $this;
-    }
 
     public function getPassportFile(): ?string
     {
@@ -236,18 +219,6 @@ class Candidat
     public function setDateOfBirth(?\DateTimeInterface $dateOfBirth): static
     {
         $this->dateOfBirth = $dateOfBirth;
-
-        return $this;
-    }
-
-    public function isAvailability(): ?bool
-    {
-        return $this->availability;
-    }
-
-    public function setAvailability(?bool $availability): static
-    {
-        $this->availability = $availability;
 
         return $this;
     }
@@ -377,5 +348,10 @@ class Candidat
         $this->User = $User;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->lastName;
     }
 }

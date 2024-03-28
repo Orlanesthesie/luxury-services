@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+
+{{form_row(form.date)}}
+{{form_row(form.candidat)}}
+{{form_row(form.jobOffer)}}
+
+<button class="btn">{{ button_label|default('Apply') }}</button>
+{{ form_end(form) }}
+

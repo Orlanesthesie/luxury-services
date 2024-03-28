@@ -23,7 +23,7 @@ class JobOffer
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $active = null;
+    private ?bool $active = true;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $notes = null;
@@ -242,5 +242,10 @@ class JobOffer
         $this->JobType = $JobType;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->reference;
     }
 }

@@ -116,6 +116,6 @@ class CandidatController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_candidat_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }

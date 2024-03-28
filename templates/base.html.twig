@@ -4,11 +4,12 @@
 		<meta charset="UTF-8">
 	</head>
 
-	<title>
-		{% block title %}Welcome!
-		{% endblock %}
+<title>
+	{% block title %}Job Offer
+	{% endblock %}
 
-	</title>
+</title>
+
 
 
 	<script>
@@ -105,20 +106,20 @@
 								<a href="/">Home</a>
 							</li>
 							<li>
-								<a href="/templates/jobs/index.html">Jobs Offers</a>
+								<a href="{{ path('app_jobOffer')}}">Jobs Offers</a>
 							</li>
 							<li>
 								<a href="{{ path('app_compagny') }}">About Us</a>
 							</li>
 							<li>
-								<a href="{{ path('app_contact') }}">Contact</a>
+								<a href="{{ path('app_contact_new') }}">Contact</a>
 							</li>
 							<li>-</li>
 							<li>
-								<a href="/templates/auth/profile.html">Profile</a>
+								<a href="{{ path('app_candidat_edit') }}">Profile</a>
 							</li>
 							<li>
-								<a href="/logout.html">Logout</a>
+								<a href="{{ path('app_login') }}">Logout</a>
 							</li>
 						</ul>
 					</nav>
@@ -162,7 +163,7 @@
 				</a>
 			</li>
 			<li class=" dropdown">
-				<a target="_self" href="/templates/jobs/index.html">
+				<a target="_self" href="{{ path('app_jobOffer')}}">
 					<i class=""></i>
 					<span>Jobs offers</span>
 				</a>
@@ -175,7 +176,7 @@
 				</a>
 			</li>
 			<li class=" dropdown">
-			<a target="_self" href="{{ path('app_contact') }}">
+			<a target="_self" href="{{ path('app_contact_new') }}">
 				<i class=""></i>
 				<span>Contact</span>
 			</a>
@@ -223,7 +224,7 @@
 	</a>
 </li>
 <li class=" dropdown">
-	<a target="_self" href="{{ path('app_contact') }}">
+	<a target="_self" href="{{ path('app_contact_new') }}">
 		<span>Contact</span>
 	</a>
 </li></ul></div><!-- /.container --></div><!-- /.secondary-footer --></footer><script type="text/javascript">document.querySelector(".rev_slider_wrapper").setAttribute("style", "background:url('assets/img" + (
